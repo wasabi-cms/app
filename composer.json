@@ -1,0 +1,49 @@
+{
+    "name": "wasabi-cms/app",
+    "description": "Wasabi skeleton app",
+    "homepage": "http://github.com/wasabi-cms/app",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.0.0",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "cakephp/cakephp": "3.4.*",
+        "mobiledetect/mobiledetectlib": "2.*",
+        "cakephp/migrations": "~1.0",
+        "cakephp/plugin-installer": "*",
+        "wasabi-cms/core": "dev-development",
+        "frankfoerster/cakephp-environment": "3.0.*"
+    },
+    "require-dev": {
+        "psy/psysh": "@stable",
+        "cakephp/debug_kit": "~3.2",
+        "cakephp/bake": "~1.1",
+        "phpstan/phpstan": "^0.6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "App\\Console\\Installer::postInstall",
+        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+        "check": [
+            "@test",
+            "@cs-check"
+        ],
+        "cs-check": "phpcs --colors -p --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
+        "cs-fix": "phpcbf --colors --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests",
+        "test": "phpunit --colors=always"
+    },
+    "minimum-stability": "dev"
+}

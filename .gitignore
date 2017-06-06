@@ -1,0 +1,21 @@
+.idea
+
+# don't keep local configuration
+/config/Environment/environment.local.php
+
+# don't keep logs
+/logs/**
+
+# don't keep any cached files but keep subdirectories
+/tmp/cache/**
+!/tmp/cache/**/
+/tmp/cache/wasabi/core/**
+!/tmp/cache/wasabi/core/**/
+/tmp/sessions/**
+/tmp/tests/**
+
+# don't keep vendor
+/vendor/**
+
+# keep all .gitkeep files
+!.gitkeep
